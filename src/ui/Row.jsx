@@ -1,5 +1,5 @@
 function Row({ children }) {
-  return <div>{children}</div>;
+  return <div className="mt-4 text-center">{children}</div>;
 }
 
 export default Row;

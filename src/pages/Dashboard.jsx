@@ -1,7 +1,7 @@
 import CategoriesTable from "../features/Categories/CategoriesTable";
 import CreateRecordForm from "../features/Records/CreateRecordForm";
+import SubmmitButton from "../features/Records/SubmmitButton";
 import AmountInput from "../ui/AmountInput";
-import Button from "../ui/Button";
 import CategoriesContainer from "../ui/CategoriesContainer";
 import Header from "../ui/Header";
 import RemarkInput from "../ui/RemarkInput";
@@ -9,25 +9,24 @@ import Row from "../ui/Row";
 
 function Dashboard() {
   return (
-    <CreateRecordForm>
-      <Header>
-        <Button type="primary">Income</Button>
-        <Button>Outcome</Button>
-      </Header>
-      <CategoriesContainer>
-        <CategoriesTable />
-      </CategoriesContainer>
-      <Row>
-        <AmountInput />
-      </Row>
-      <Row>
-        <RemarkInput />
-      </Row>
+    <div className="flex h-lvh justify-center bg-cyan-100">
+      <CreateRecordForm>
+        <Header />
+        <CategoriesContainer>
+          <CategoriesTable />
+        </CategoriesContainer>
+        <Row>
+          <AmountInput />
+        </Row>
+        <Row>
+          <RemarkInput />
+        </Row>
 
-      <Row>
-        <Button>Button</Button>
-      </Row>
-    </CreateRecordForm>
+        <Row>
+          <SubmmitButton />
+        </Row>
+      </CreateRecordForm>
+    </div>
   );
 }
 
