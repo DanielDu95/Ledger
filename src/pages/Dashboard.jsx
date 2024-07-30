@@ -1,10 +1,9 @@
 import CategoriesTable from "../features/Categories/CategoriesTable";
 import CreateRecordForm from "../features/Records/CreateRecordForm";
 import SubmmitButton from "../features/Records/SubmmitButton";
-import AmountInput from "../ui/AmountInput";
+import AmountAndRemark from "../ui/AmountAndRemark";
 import CategoriesContainer from "../ui/CategoriesContainer";
 import Header from "../ui/Header";
-import RemarkInput from "../ui/RemarkInput";
 import Row from "../ui/Row";
 
 function Dashboard() {
@@ -15,12 +14,7 @@ function Dashboard() {
         <CategoriesContainer>
           <CategoriesTable />
         </CategoriesContainer>
-        <Row>
-          <AmountInput />
-        </Row>
-        <Row>
-          <RemarkInput />
-        </Row>
+        <AmountAndRemark />
 
         <Row>
           <SubmmitButton />

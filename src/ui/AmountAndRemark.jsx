@@ -1,6 +1,6 @@
-function AmountInput() {
+function AmountAndRemark() {
   return (
-    <div className="mt-32 flex flex-col items-center justify-center gap-4 bg-slate-100 p-8">
+    <div className="mt-32 flex flex-col items-center justify-center gap-4 p-8">
       <div className="relative">
         <input
           className="h-20 rounded-full border-2 border-yellow-500 p-2 text-center text-3xl"
@@ -24,4 +24,4 @@ function AmountInput() {
   );
 }
 
-export default AmountInput;
+export default AmountAndRemark;
