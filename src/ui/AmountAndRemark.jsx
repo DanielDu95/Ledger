@@ -4,7 +4,7 @@ function AmountAndRemark() {
       <div className="relative">
         <input
           className="h-20 rounded-full border-2 border-yellow-500 p-2 text-center text-3xl"
-          defaultValue="amount"
+          placeholder="amount"
         />
         <span className="absolute right-[-15%] top-[50%] translate-y-[-50%] justify-self-center p-3 text-4xl">
           💰
@@ -13,7 +13,7 @@ function AmountAndRemark() {
       <div className="relative">
         <input
           className="h-20 rounded-full border-2 border-yellow-500 p-2 text-center text-3xl"
-          defaultValue="remark"
+          placeholder="remark"
           maxLength={40}
         />
         <span className="absolute right-[-15%] top-[50%] translate-y-[-50%] justify-self-center p-3 text-4xl">

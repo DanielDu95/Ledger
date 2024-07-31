@@ -3,9 +3,11 @@ function HeaderButtons() {
     "w-40 h-20 text-center hover:bg-yellow-300  font-bold flex justify-center items-center";
   function handleOutcome(e) {
     e.preventDefault();
+    // setType("outcome");
   }
   function handleIncome(e) {
     e.preventDefault();
+    // setType("income");
   }
   return (
     <>
