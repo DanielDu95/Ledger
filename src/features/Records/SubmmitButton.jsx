@@ -1,10 +1,15 @@
+import { useAddRecord } from "./useAddRecord";
+
 function SubmmitButton() {
+  const { isPending } = useAddRecord();
   return (
-    <input
+    <button
       type="submit"
-      value="Submit"
-      className="h-20 w-60 rounded-full border-2 border-yellow-500 p-2 text-3xl"
-    />
+      className="h-20 w-60 rounded-full border-2 border-yellow-500 p-2 text-3xl font-bold"
+      disabled={isPending}
+    >
+      Submit
+    </button>
   );
 }
 

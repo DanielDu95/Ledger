@@ -4,6 +4,9 @@ import {
   Navigate,
 } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 function App() {
   const router = createBrowserRouter([
@@ -21,7 +24,11 @@ function App() {
     },
   ]);
 
-  return <RouterProvider router={router} />;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
+  );
 }
 
 export default App;

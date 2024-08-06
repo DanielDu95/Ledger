@@ -1,20 +1,59 @@
 import { useForm } from "react-hook-form";
 import { useRecordFormContext } from "./RecordFormContextProvider";
+import Error from "../../ui/Error";
+import { useAddRecord } from "./useAddRecord";
 
 function CreateRecordForm({ children }) {
-  const { register, handleSubmit } = useForm();
-  const { type } = useRecordFormContext();
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm();
+  const { state, dispatch } = useRecordFormContext();
+  const { addRecord } = useAddRecord();
 
-  const onSubmit = (data) => {
-    console.log(data);
-  };
+  function onSubmit(data) {
+    addRecord(data);
+    dispatch({ type: "set_amount", payload: "" });
+    dispatch({ type: "set_remark", payload: "" });
+  }
   return (
     <form
-      className="min-h max-w-[450px] flex-grow overflow-y-scroll bg-white"
+      className="min-h relative max-w-[450px] flex-grow overflow-y-scroll bg-white"
       onSubmit={handleSubmit(onSubmit)}
     >
       {children}
-      <input hidden {...register("type")} value={type} />
+      {(errors?.amount || errors?.category) && (
+        <Error>⛔Category or amount missing</Error>
+      )}
+      <input
+        hidden
+        defaultValue={state.moneyType}
+        {...register("moneyType", {
+          required: "What type of money do you want to record",
+        })}
+        onChange={setValue("moneyType", state.moneyType)}
+      />
+      <input
+        hidden
+        {...register("category", {
+          required: "Please choose one category",
+        })}
+        onChange={setValue("category", state.category)}
+      />
+      <input
+        hidden
+        {...register("amount", {
+          required: "Please enter the amount",
+        })}
+        onChange={setValue("amount", state.amount)}
+      />
+      <input
+        hidden
+        {...register("remark")}
+        onChange={setValue("remark", state.remark)}
+      />
     </form>
   );
 }

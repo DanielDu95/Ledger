@@ -1,22 +1,37 @@
+import { useRecordFormContext } from "./RecordFormContextProvider";
+
 function HeaderButtons() {
-  const style =
-    "w-40 h-20 text-center hover:bg-yellow-300  font-bold flex justify-center items-center";
+  const { state, dispatch } = useRecordFormContext();
+  const style = `w-40 h-20 text-center hover:bg-yellow-300  font-bold flex justify-center items-center`;
   function handleOutcome(e) {
     e.preventDefault();
-    // setType("outcome");
+    dispatch({ type: "set_moneyType", payload: "outcome" });
   }
   function handleIncome(e) {
     e.preventDefault();
-    // setType("income");
+    dispatch({ type: "set_moneyType", payload: "income" });
   }
   return (
     <>
-      <li className={style + " rounded-l-full"}>
-        <button onClick={handleOutcome}>Outcome</button>
-      </li>
-      <li className={style + " rounded-r-full"}>
-        <button onClick={handleIncome}>Income</button>
-      </li>
+      <button
+        className={
+          style +
+          ` rounded-l-full ${state.moneyType === "outcome" ? "bg-yellow-300" : ""}`
+        }
+        onClick={handleOutcome}
+      >
+        Outcome
+      </button>
+
+      <button
+        className={
+          style +
+          ` rounded-r-full ${state.moneyType === "income" ? "bg-yellow-300" : ""}`
+        }
+        onClick={handleIncome}
+      >
+        Income
+      </button>
     </>
   );
 }
