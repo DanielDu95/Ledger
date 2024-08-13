@@ -1,4 +1,4 @@
-import { useRecordFormContext } from "../Records/RecordFormContextProvider";
+import { useRecordFormContext } from "../../pages/dashboard/RecordFormContextProvider";
 
 function Category({ Icon, label }) {
   const { state, dispatch } = useRecordFormContext();

@@ -12,7 +12,7 @@ import {
 } from "react-icons/io5";
 import Category from "./Category";
 import { useCategories } from "./useCategories";
-import { useRecordFormContext } from "../Records/RecordFormContextProvider";
+import { useRecordFormContext } from "../../pages/dashboard/RecordFormContextProvider";
 
 // const fakeCategories = [
 //   { id: 1, name: "food" },

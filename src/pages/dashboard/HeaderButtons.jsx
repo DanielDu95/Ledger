@@ -12,7 +12,7 @@ function HeaderButtons() {
     dispatch({ type: "set_moneyType", payload: "income" });
   }
   return (
-    <>
+    <div className="flex h-[5.38rem] gap-0 rounded-full border-[0.2rem] border-black text-2xl">
       <button
         className={
           style +
@@ -32,7 +32,7 @@ function HeaderButtons() {
       >
         Income
       </button>
-    </>
+    </div>
   );
 }
 

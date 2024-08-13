@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# D:\Collection-of-projects\Ledger\node_modules\react-lite-month-picker\src\components\MonthPicker\MonthPicker.module.css
+# this file was changed. .pickerContainer{z-index:10}  

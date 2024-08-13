@@ -3,8 +3,9 @@ import {
   RouterProvider,
   Navigate,
 } from "react-router-dom";
-import Dashboard from "./pages/Dashboard";
+import Dashboard from "./pages/dashboard/Dashboard";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import Records from "./pages/records/Records";
 
 const queryClient = new QueryClient();
 
@@ -19,8 +20,8 @@ function App() {
       element: <Dashboard />,
     },
     {
-      path: "about",
-      element: <div>About</div>,
+      path: "records",
+      element: <Records />,
     },
   ]);
 

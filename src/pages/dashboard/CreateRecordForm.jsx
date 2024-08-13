@@ -20,7 +20,7 @@ function CreateRecordForm({ children }) {
   }
   return (
     <form
-      className="min-h relative max-w-[450px] flex-grow overflow-y-scroll bg-white"
+      className="relative max-w-[450px] flex-grow overflow-y-scroll bg-white"
       onSubmit={handleSubmit(onSubmit)}
     >
       {children}

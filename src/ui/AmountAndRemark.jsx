@@ -1,4 +1,4 @@
-import { useRecordFormContext } from "../features/Records/RecordFormContextProvider";
+import { useRecordFormContext } from "../pages/dashboard/RecordFormContextProvider";
 
 function AmountAndRemark() {
   const { state, dispatch } = useRecordFormContext();
