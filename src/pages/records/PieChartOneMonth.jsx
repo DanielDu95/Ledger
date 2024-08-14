@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Cell, Pie, PieChart, ResponsiveContainer, Sector } from "recharts";
+import { useRecords } from "./useRecords";
 
 const data = [
   { name: "Group A", value: 400 },
@@ -87,12 +88,27 @@ function PieChartOneMonth() {
   const [state, setState] = useState({
     activeIndex: 0,
   });
-
   const onPieEnter = (_, index) => {
     setState({
       activeIndex: index,
     });
   };
+  const { records, isLoading } = useRecords();
+  if (isLoading) return <div>loading...</div>;
+  const categorySums = records
+    .filter((record) => record.moneyType === "outcome")
+    .reduce((acc, item) => {
+      if (!acc[item.category]) {
+        acc[item.category] = 0;
+      }
+      acc[item.category] += item.amount;
+      return acc;
+    }, {});
+  const result = Object.keys(categorySums).map((category) => ({
+    name: category,
+    value: categorySums[category],
+  }));
+  console.log(result);
 
   return (
     <ResponsiveContainer width="100%" height="100%">
@@ -100,7 +116,7 @@ function PieChartOneMonth() {
         <Pie
           activeIndex={state.activeIndex}
           activeShape={renderActiveShape}
-          data={data}
+          data={result}
           cx="50%"
           cy="50%"
           innerRadius={60}
