@@ -25,3 +25,6 @@ dist-ssr
 
 # D:\Collection-of-projects\Ledger\node_modules\react-lite-month-picker\src\components\MonthPicker\MonthPicker.module.css
 # this file was changed. .pickerContainer{z-index:10}  
+
+# D:\Collection-of-projects\Ledger\node_modules\react-lite-month-picker\src\components\MonthInput\MonthInput.jsx
+# This file was changed.  defaultProps will not be supported in the future so I used default params

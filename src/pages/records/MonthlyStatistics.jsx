@@ -1,6 +1,9 @@
 import { formatCurrency } from "../../utils/helper";
+import { useRecords } from "./useRecords";
 
 function MonthlyStatistics() {
+  const { records } = useRecords();
+  console.log(records);
   return (
     <>
       <div className="grid grid-cols-2 items-center justify-center gap-y-4 text-3xl">
