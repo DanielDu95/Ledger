@@ -1,4 +1,3 @@
-import { useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { MonthInput, MonthPicker } from "react-lite-month-picker";
 function HeaderCalendar() {
@@ -10,7 +9,7 @@ function HeaderCalendar() {
   // const queryClient = useQueryClient();
   // queryClient.prefetchInfiniteQuery();
 
-  console.log(Date.parse("08/06/2024"));
+  // console.log(Date.parse("08/06/2024"));
 
   return (
     <>

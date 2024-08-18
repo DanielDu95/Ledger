@@ -11,16 +11,16 @@ function MonthlyStatistics() {
       acc += record.amount;
       return acc;
     }, 0);
-  console.log(monthlyIncome);
+  // console.log(monthlyIncome);
   const monthlyOutcome = records
     .filter((record) => record.moneyType === "outcome")
     .reduce((acc, record) => {
       acc += record.amount;
       return acc;
     }, 0);
-  console.log(monthlyOutcome);
+  // console.log(monthlyOutcome);
   const monthlyBalance = monthlyIncome - monthlyOutcome;
-  console.log(monthlyBalance);
+  // console.log(monthlyBalance);
 
   return (
     <>

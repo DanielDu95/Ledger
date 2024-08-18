@@ -1,63 +1,30 @@
+import { useState } from "react";
+import Filter from "./Filter";
+import RecordRow from "./RecordRow";
+import { useRecords } from "./useRecords";
+
 function RecordsTable() {
+  const { records, isLoading } = useRecords();
+  const [sortBy, setSortBy] = useState("recent");
+  if (isLoading) return <div>loading...</div>;
+  let sortedRecords;
+  if (sortBy === "recent") sortedRecords = records;
+  else if (sortBy === "amount")
+    sortedRecords = records.toSorted((a, b) => b.amount - a.amount);
+  // console.log(records);
+  // console.log(new Date(records[0].created_at).getDate());
   return (
-    <ul className="flex h-[24rem] flex-col items-center justify-start overflow-y-scroll text-3xl">
-      <li className="m-4 w-[80%] rounded-[2rem] border-2 border-gray-950">
-        <ul className="flex flex-col gap-5 p-4">
-          <li className="mx-3 flex h-[4rem] items-center justify-between border-b-2 border-gray-950">
-            <p>date</p>
-            <p>balance</p>
-          </li>
-          <li className="mx-3 flex items-center justify-between border-b-2 border-gray-300">
-            <p>icon food</p>
-            <p>50</p>
-          </li>
-          <li className="mx-3 flex items-center justify-between border-b-2 border-gray-300">
-            <p>icon food</p>
-            <p>50</p>
-          </li>
-          <li className="mx-3 flex items-center justify-between border-b-2 border-gray-300">
-            <p>icon food</p>
-            <p>50</p>
-          </li>
-          <li className="mx-3 flex items-center justify-between border-b-2 border-gray-300">
-            <p>icon food</p>
-            <p>50</p>
-          </li>
-          <li className="mx-3 flex items-center justify-between">
-            <p>icon food</p>
-            <p>50</p>
-          </li>
-        </ul>
-      </li>
-      <li className="m-4 w-[80%] rounded-[2rem] border-2 border-gray-950">
-        <ul className="flex flex-col gap-5 p-4">
-          <li className="mx-3 flex h-[4rem] items-center justify-between border-b-2 border-gray-950">
-            <p>date</p>
-            <p>balance</p>
-          </li>
-          <li className="mx-3 flex items-center justify-between border-b-2 border-gray-300">
-            <p>icon food</p>
-            <p>50</p>
-          </li>
-          <li className="mx-3 flex items-center justify-between border-b-2 border-gray-300">
-            <p>icon food</p>
-            <p>50</p>
-          </li>
-          <li className="mx-3 flex items-center justify-between border-b-2 border-gray-300">
-            <p>icon food</p>
-            <p>50</p>
-          </li>
-          <li className="mx-3 flex items-center justify-between border-b-2 border-gray-300">
-            <p>icon food</p>
-            <p>50</p>
-          </li>
-          <li className="mx-3 flex items-center justify-between">
-            <p>icon food</p>
-            <p>50</p>
-          </li>
-        </ul>
-      </li>
-    </ul>
+    <>
+      <h2 className="mt-10 flex items-center justify-between px-5 text-center text-3xl font-semibold">
+        <div className="text-yellow-500">RECORDS</div>
+        <Filter setSortBy={setSortBy} sortBy={sortBy} />
+      </h2>
+      <ul className="flex h-[24rem] flex-col items-center justify-start gap-0 overflow-y-scroll text-3xl">
+        {sortedRecords.map((record) => (
+          <RecordRow record={record} key={record.id} />
+        ))}
+      </ul>
+    </>
   );
 }
 
