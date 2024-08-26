@@ -19,8 +19,21 @@ export async function addRecord(newRecord) {
   return data;
 }
 
-export async function getRecordByMonth() {
-  const { data: records, error } = await supabase.from("records").select("*");
+export async function getRecordsByMonth({ month, year }) {
+  const yearMonthStart = `${year}-${String(month).padStart(2, "0")}-01`;
+
+  const yearMonthEnd =
+    month === 12
+      ? `${year + 1}-${String(1).padStart(2, "0")}-01`
+      : `${year}-${String(month + 1).padStart(2, "0")}-01`;
+
+  console.log(yearMonthStart, yearMonthEnd);
+
+  const { data: records, error } = await supabase
+    .from("records")
+    .select("*")
+    .filter("created_at", "gte", yearMonthStart)
+    .filter("created_at", "lt", yearMonthEnd);
   if (error) console.log("Failed to get records from database");
   return records;
 

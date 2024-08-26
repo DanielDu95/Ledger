@@ -1,9 +1,10 @@
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { formatCurrency } from "../../utils/helper";
 import Modal from "../../ui/Modal";
+import RecordDetail from "./RecordDetail";
 
 function RecordRow({ record }) {
-  const month = new Date(record.created_at).getMonth();
+  const month = new Date(record.created_at).getMonth() + 1;
   const date = new Date(record.created_at).getDate();
   return (
     <>
@@ -22,7 +23,7 @@ function RecordRow({ record }) {
             </button>
           </Modal.Open>
           <Modal.Window name="something">
-            <div>something</div>
+            <RecordDetail remark={record.remark} />
           </Modal.Window>
         </Modal>
       </li>

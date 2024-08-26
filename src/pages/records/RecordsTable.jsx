@@ -2,9 +2,11 @@ import { useState } from "react";
 import Filter from "./Filter";
 import RecordRow from "./RecordRow";
 import { useRecords } from "./useRecords";
+import { useRecordsContext } from "./RecordsContextProvider";
 
 function RecordsTable() {
-  const { records, isLoading } = useRecords();
+  const { selectedMonthData } = useRecordsContext();
+  const { records, isLoading } = useRecords(selectedMonthData);
   const [sortBy, setSortBy] = useState("recent");
   if (isLoading) return <div>loading...</div>;
   let sortedRecords;

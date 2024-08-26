@@ -1,14 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
-import { getRecords } from "../../services/apiRecords";
+import { getRecordsByMonth } from "../../services/apiRecords";
 
-export function useRecords() {
+export function useRecords({ month, year }) {
   const {
     data: records,
     error,
     isLoading,
   } = useQuery({
     queryKey: ["records"],
-    queryFn: getRecords,
+    queryFn: () => getRecordsByMonth({ month, year }),
   });
   return { records, error, isLoading };
 }

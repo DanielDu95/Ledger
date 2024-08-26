@@ -6,6 +6,11 @@ import PieChartOneMonth from "./PieChartOneMonth";
 import { RecordsContextProvider } from "./RecordsContextProvider";
 
 function Records() {
+  // useEffect(function () {
+  //   getRecordsByMonth({ month: 8, year: 2024 }).then((data) =>
+  //     console.log(data),
+  //   );
+  // }, []);
   return (
     <RecordsContextProvider>
       <div className="flex h-lvh justify-center bg-cyan-100">

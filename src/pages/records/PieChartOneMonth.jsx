@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Cell, Pie, PieChart, ResponsiveContainer, Sector } from "recharts";
 import { useRecords } from "./useRecords";
+import { useRecordsContext } from "./RecordsContextProvider";
 
 // const data = [
 //   { name: "Group A", value: 400 },
@@ -93,7 +94,8 @@ function PieChartOneMonth() {
       activeIndex: index,
     });
   };
-  const { records, isLoading } = useRecords();
+  const { selectedMonthData } = useRecordsContext();
+  const { records, isLoading } = useRecords(selectedMonthData);
   if (isLoading) return <div>loading...</div>;
   const categorySums = records
     .filter((record) => record.moneyType === "outcome")

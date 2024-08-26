@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { MonthInput, MonthPicker } from "react-lite-month-picker";
+import { useRecordsContext } from "./RecordsContextProvider";
 function HeaderCalendar() {
-  const [selectedMonthData, setSelectedMonthData] = useState({
-    month: new Date().getMonth() + 1,
-    year: new Date().getFullYear(),
-  });
+  const { selectedMonthData, setSelectedMonthData } = useRecordsContext();
+  console.log(selectedMonthData);
   const [isPickerOpen, setIsPickerOpen] = useState(false);
   // const queryClient = useQueryClient();
   // queryClient.prefetchInfiniteQuery();

@@ -1,8 +1,10 @@
 import { formatCurrency } from "../../utils/helper";
+import { useRecordsContext } from "./RecordsContextProvider";
 import { useRecords } from "./useRecords";
 
 function MonthlyStatistics() {
-  const { records, isLoading } = useRecords();
+  const { selectedMonthData } = useRecordsContext();
+  const { records, isLoading } = useRecords(selectedMonthData);
   if (isLoading) return <div>loading...</div>;
 
   const monthlyIncome = records
