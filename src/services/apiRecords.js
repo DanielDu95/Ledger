@@ -1,6 +1,6 @@
 import supabase from "./supabase";
 
-export async function getRecords() {
+export async function getAllRecords() {
   const { data, error } = await supabase.from("records").select("*");
   if (error) {
     console.error("Failed to get records from database");
@@ -19,21 +19,27 @@ export async function addRecord(newRecord) {
   return data;
 }
 
-export async function getRecordsByMonth({ month, year }) {
-  const yearMonthStart = `${year}-${String(month).padStart(2, "0")}-01`;
+export async function getRecordsByTimePeriod(timePeriod) {
+  let start;
+  let end;
+  if (timePeriod.month) {
+    start = `${timePeriod.year}-${String(timePeriod.month).padStart(2, "0")}-01`;
 
-  const yearMonthEnd =
-    month === 12
-      ? `${year + 1}-${String(1).padStart(2, "0")}-01`
-      : `${year}-${String(month + 1).padStart(2, "0")}-01`;
+    end =
+      timePeriod.month === 12
+        ? `${timePeriod.year + 1}-${String(1).padStart(2, "0")}-01`
+        : `${timePeriod.year}-${String(timePeriod.month + 1).padStart(2, "0")}-01`;
+  } else {
+    start = `${timePeriod.year}-01-01`;
 
-  console.log(yearMonthStart, yearMonthEnd);
+    end = `${timePeriod.year + 1}-01-01`;
+  }
 
   const { data: records, error } = await supabase
     .from("records")
     .select("*")
-    .filter("created_at", "gte", yearMonthStart)
-    .filter("created_at", "lt", yearMonthEnd);
+    .filter("created_at", "gte", start)
+    .filter("created_at", "lt", end);
   if (error) console.log("Failed to get records from database");
   return records;
 

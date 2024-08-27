@@ -5,8 +5,9 @@ import {
 } from "react-router-dom";
 import Dashboard from "./pages/dashboard/Dashboard";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import Records from "./pages/records/Records";
+import Monthly from "./pages/monthly/Monthly";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools/production";
+import Annual from "./pages/annual/Annual";
 
 const queryClient = new QueryClient();
 
@@ -21,8 +22,12 @@ function App() {
       element: <Dashboard />,
     },
     {
-      path: "records",
-      element: <Records />,
+      path: "monthly",
+      element: <Monthly />,
+    },
+    {
+      path: "annual",
+      element: <Annual />,
     },
   ]);
 

@@ -2,8 +2,7 @@ import { useState } from "react";
 import { MonthInput, MonthPicker } from "react-lite-month-picker";
 import { useRecordsContext } from "./RecordsContextProvider";
 function HeaderCalendar() {
-  const { selectedMonthData, setSelectedMonthData } = useRecordsContext();
-  console.log(selectedMonthData);
+  const { timePeriod, setTimePeriod } = useRecordsContext();
   const [isPickerOpen, setIsPickerOpen] = useState(false);
   // const queryClient = useQueryClient();
   // queryClient.prefetchInfiniteQuery();
@@ -14,15 +13,15 @@ function HeaderCalendar() {
     <>
       <div>
         <MonthInput
-          selected={selectedMonthData}
+          selected={timePeriod}
           setShowMonthPicker={setIsPickerOpen}
           showMonthPicker={isPickerOpen}
         />
         {isPickerOpen ? (
           <MonthPicker
             setIsOpen={setIsPickerOpen}
-            selected={selectedMonthData}
-            onChange={setSelectedMonthData}
+            selected={timePeriod}
+            onChange={setTimePeriod}
             bgColorMonthActive="rgb(253 224 71 )"
           />
         ) : null}

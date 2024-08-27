@@ -1,6 +1,6 @@
 import Header from "../../ui/Header";
 import HeaderCalendar from "./HeaderCalendar";
-import MonthlyStatistics from "./MonthlyStatistics";
+import Statistics from "./Statistics";
 import RecordsTable from "./RecordsTable";
 import PieChartOneMonth from "./PieChartOneMonth";
 import { RecordsContextProvider } from "./RecordsContextProvider";
@@ -22,7 +22,7 @@ function Records() {
             <PieChartOneMonth />
           </div>
 
-          <MonthlyStatistics />
+          <Statistics type="Monthly" />
           <RecordsTable />
         </div>
       </div>

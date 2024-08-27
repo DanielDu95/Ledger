@@ -3,13 +3,18 @@ import { createContext, useContext, useState } from "react";
 const RecordsContext = createContext();
 
 function RecordsContextProvider({ children }) {
-  const [selectedMonthData, setSelectedMonthData] = useState({
+  const [timePeriod, setTimePeriod] = useState({
     month: new Date().getMonth() + 1,
     year: new Date().getFullYear(),
   });
+  const [visibleLine, setVisibleLine] = useState({
+    income: true,
+    outcome: true,
+    balance: true,
+  });
   return (
     <RecordsContext.Provider
-      value={{ selectedMonthData, setSelectedMonthData }}
+      value={{ timePeriod, setTimePeriod, visibleLine, setVisibleLine }}
     >
       {children}
     </RecordsContext.Provider>

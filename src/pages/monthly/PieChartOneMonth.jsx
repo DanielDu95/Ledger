@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Cell, Pie, PieChart, ResponsiveContainer, Sector } from "recharts";
 import { useRecords } from "./useRecords";
 import { useRecordsContext } from "./RecordsContextProvider";
+import Error from "../../ui/Error";
 
 // const data = [
 //   { name: "Group A", value: 400 },
@@ -94,9 +95,10 @@ function PieChartOneMonth() {
       activeIndex: index,
     });
   };
-  const { selectedMonthData } = useRecordsContext();
-  const { records, isLoading } = useRecords(selectedMonthData);
+  const { timePeriod } = useRecordsContext();
+  const { records, isLoading } = useRecords(timePeriod);
   if (isLoading) return <div>loading...</div>;
+
   const categorySums = records
     .filter((record) => record.moneyType === "outcome")
     .reduce((acc, item) => {
@@ -110,6 +112,8 @@ function PieChartOneMonth() {
     name: category.toUpperCase(),
     value: categorySums[category],
   }));
+
+  if (!result?.length) return <Error message="No outcome in this month" />;
 
   return (
     <ResponsiveContainer width="100%" height="100%">
