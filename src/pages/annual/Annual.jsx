@@ -10,11 +10,11 @@ function Annual() {
   return (
     <RecordsContextProvider>
       <div className="flex h-lvh justify-center bg-cyan-100">
-        <div className="flex max-w-[450px] flex-grow flex-col gap-10 overflow-y-scroll bg-white">
+        <div className="flex max-w-[400px] flex-grow flex-col gap-10 overflow-y-scroll bg-white">
           <Header>
             <HeaderOptions />
           </Header>
-          <div className="flex h-[30rem] w-[100%] flex-col items-center justify-between gap-10">
+          <div className="flex h-[400px] w-[100%] flex-col items-center justify-between gap-10">
             <YearSelector />
             <LineChartAnnual />
           </div>

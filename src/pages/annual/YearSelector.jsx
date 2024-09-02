@@ -9,7 +9,7 @@ function YearSelector() {
   }, [setTimePeriod]);
 
   return (
-    <div className="flex items-center justify-center gap-10 p-5">
+    <div className="flex items-center justify-center gap-10 p-1">
       <button
         onClick={() =>
           setTimePeriod((time) => {

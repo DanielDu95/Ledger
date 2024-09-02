@@ -20,12 +20,12 @@ function CreateRecordForm({ children }) {
   }
   return (
     <form
-      className="relative max-w-[450px] flex-grow overflow-y-scroll bg-white"
+      className="relative flex max-w-[450px] flex-col overflow-y-scroll bg-white"
       onSubmit={handleSubmit(onSubmit)}
     >
       {children}
       {(errors?.amount || errors?.category) && (
-        <Error>⛔Category or amount missing</Error>
+        <Error message="⛔Category or amount missing" />
       )}
       <input
         hidden

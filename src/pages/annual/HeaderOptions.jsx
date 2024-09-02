@@ -1,7 +1,7 @@
 import { useRecordsContext } from "../monthly/RecordsContextProvider";
 
 function HeaderOptions() {
-  const style = `w-40 h-20 text-center  font-bold flex justify-center items-center`;
+  const style = `w-[7rem] h-20 text-center  font-bold flex justify-center items-center`;
   const { setVisibleLine, visibleLine } = useRecordsContext();
   function handleOutcome(e) {
     e.preventDefault();
@@ -25,7 +25,7 @@ function HeaderOptions() {
     });
   }
   return (
-    <div className="flex h-[5.38rem] gap-0 rounded-full border-[0.2rem] border-black text-2xl">
+    <div className="flex h-[5.38rem] gap-0 rounded-full border-[0.2rem] border-black text-xl">
       <button
         className={
           style +

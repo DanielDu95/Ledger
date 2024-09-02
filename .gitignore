@@ -28,3 +28,12 @@ dist-ssr
 
 # D:\Collection-of-projects\Ledger\node_modules\react-lite-month-picker\src\components\MonthInput\MonthInput.jsx
 # This file was changed.  defaultProps will not be supported in the future so I used default params
+
+#D:\Collection-of-Project\Ledger\node_modules\react-lite-month-picker\src\components\MonthInput\MonthInput.module.css
+#.monthInputField {
+#  /* width: var(--month-input-width); */}
+
+#D:\Collection-of-Project\Ledger\node_modules\react-lite-month-picker\src\components\MonthInput\MonthInput.module.css
+# .pickerContainer {/* width: var(--month-input-width); */
+#  min-width: 200px;}
+

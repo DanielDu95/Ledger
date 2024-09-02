@@ -3,6 +3,8 @@ import { Cell, Pie, PieChart, ResponsiveContainer, Sector } from "recharts";
 import { useRecords } from "./useRecords";
 import { useRecordsContext } from "./RecordsContextProvider";
 import Error from "../../ui/Error";
+import { formatCurrency } from "../../utils/helper";
+import Spinner from "../../ui/Spinner";
 
 // const data = [
 //   { name: "Group A", value: 400 },
@@ -14,11 +16,11 @@ import Error from "../../ui/Error";
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
 const renderActiveShape = (props) => {
-  const RADIAN = Math.PI / 180;
+  // const RADIAN = Math.PI / 180;
   const {
     cx,
     cy,
-    midAngle,
+    // midAngle,
     innerRadius,
     outerRadius,
     startAngle,
@@ -28,20 +30,26 @@ const renderActiveShape = (props) => {
     percent,
     value,
   } = props;
-  const sin = Math.sin(-RADIAN * midAngle);
-  const cos = Math.cos(-RADIAN * midAngle);
-  const sx = cx + (outerRadius + 10) * cos;
-  const sy = cy + (outerRadius + 10) * sin;
-  const mx = cx + (outerRadius + 30) * cos;
-  const my = cy + (outerRadius + 30) * sin;
-  const ex = mx + (cos >= 0 ? 1 : -1) * 22;
-  const ey = my;
-  const textAnchor = cos >= 0 ? "start" : "end";
+  // const sin = Math.sin(-RADIAN * midAngle);
+  // const cos = Math.cos(-RADIAN * midAngle);
+  // const sx = cx + (outerRadius + 10) * cos;
+  // const sy = cy + (outerRadius + 10) * sin;
+  // const mx = cx + (outerRadius + 30) * cos;
+  // const my = cy + (outerRadius + 30) * sin;
+  // const ex = mx + (cos >= 0 ? 1 : -1) * 22;
+  // const ey = my;
+  // const textAnchor = cos >= 0 ? "start" : "end";
 
   return (
     <g>
-      <text x={cx} y={cy} dy={8} textAnchor="middle" fill={fill}>
+      <text x={cx} y={cy - 15} dy={8} textAnchor="middle" fill={fill}>
         {payload.name}
+      </text>
+      <text x={cx} y={cy} dy={8} textAnchor="middle" fill={fill}>
+        {formatCurrency(value)}
+      </text>
+      <text x={cx} y={cy + 15} dy={8} textAnchor="middle" fill={fill}>
+        {`(Rate ${(percent * 100).toFixed(2)}%)`}
       </text>
       <Sector
         cx={cx}
@@ -61,19 +69,19 @@ const renderActiveShape = (props) => {
         outerRadius={outerRadius + 10}
         fill={fill}
       />
-      <path
+      {/* <path
         d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`}
         stroke={fill}
         fill="none"
-      />
-      <circle cx={ex} cy={ey} r={2} fill={fill} stroke="none" />
-      <text
+      /> */}
+      {/* <circle cx={ex} cy={ey} r={2} fill={fill} stroke="none" /> */}
+      {/* <text
         x={ex + (cos >= 0 ? 1 : -1) * 12}
         y={ey}
         textAnchor={textAnchor}
         fill="#333"
-      >{`${value}`}</text>
-      <text
+      >{`${value}`}</text> */}
+      {/* <text
         x={ex + (cos >= 0 ? 1 : -1) * 12}
         y={ey}
         dy={18}
@@ -81,7 +89,7 @@ const renderActiveShape = (props) => {
         fill="#999"
       >
         {`(Rate ${(percent * 100).toFixed(2)}%)`}
-      </text>
+      </text> */}
     </g>
   );
 };
@@ -97,7 +105,7 @@ function PieChartOneMonth() {
   };
   const { timePeriod } = useRecordsContext();
   const { records, isLoading } = useRecords(timePeriod);
-  if (isLoading) return <div>loading...</div>;
+  if (isLoading) return <Spinner />;
 
   const categorySums = records
     .filter((record) => record.moneyType === "outcome")

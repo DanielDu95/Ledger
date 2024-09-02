@@ -14,7 +14,7 @@ function Category({ Icon, label }) {
         }}
       />
       <p
-        className={`font-bold text-gray-400 ${state.category === label ? "text-yellow-400" : ""}`}
+        className={`text-sm font-semibold text-gray-400 ${state.category === label ? "text-yellow-400" : ""}`}
       >
         {label[0].toUpperCase() + label.slice(1)}
       </p>

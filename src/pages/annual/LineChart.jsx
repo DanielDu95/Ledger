@@ -11,6 +11,7 @@ import {
 import { useRecords } from "../monthly/useRecords";
 import { useRecordsContext } from "../monthly/RecordsContextProvider";
 import Error from "../../ui/Error";
+import Spinner from "../../ui/Spinner";
 
 const monthlyData = {
   Jan: { income: 0, outcome: 0 },
@@ -31,7 +32,7 @@ function LineChartAnnual() {
   const { timePeriod, visibleLine } = useRecordsContext();
 
   const { records, isLoading } = useRecords(timePeriod);
-  if (isLoading) return <div>loading...</div>;
+  if (isLoading) return <Spinner />;
   if (!records?.length) return <Error message="No records found" />;
 
   records.forEach((record) => {
@@ -66,7 +67,7 @@ function LineChartAnnual() {
         height={300}
         data={data}
         margin={{
-          top: 0,
+          top: 10,
           right: 30,
           left: 0,
           bottom: 0,

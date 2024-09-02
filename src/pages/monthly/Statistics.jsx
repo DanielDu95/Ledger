@@ -1,4 +1,5 @@
 import Error from "../../ui/Error";
+import Spinner from "../../ui/Spinner";
 import { formatCurrency } from "../../utils/helper";
 import { useRecordsContext } from "./RecordsContextProvider";
 import { useRecords } from "./useRecords";
@@ -6,7 +7,7 @@ import { useRecords } from "./useRecords";
 function Statistics({ type }) {
   const { timePeriod } = useRecordsContext();
   const { records, isLoading } = useRecords(timePeriod);
-  if (isLoading) return <div>loading...</div>;
+  if (isLoading) return <Spinner />;
   if (!records?.length) return <Error message="No records found" />;
 
   const Income = records
@@ -27,18 +28,30 @@ function Statistics({ type }) {
   // console.log(monthlyBalance);
 
   return (
-    <>
-      <div className="grid grid-cols-2 items-center justify-center gap-y-4 text-3xl">
+    <div>
+      <div className="grid grid-cols-2 items-center justify-center gap-y-2 text-2xl">
         <p className="text-center">💰{type} income</p>
         <p className="text-center">💳{type} outcome</p>
-        <p className="text-center">{formatCurrency(Income)}</p>
-        <p className="text-center">{formatCurrency(Outcome)}</p>
+        <p className="text-center">
+          <span className="border-b-2 border-yellow-400">
+            {`+${formatCurrency(Income)}`}
+          </span>
+        </p>
+        <p className="text-center">
+          <span className="border-b-2 border-yellow-400">
+            {`-${formatCurrency(Outcome)}`}
+          </span>
+        </p>
       </div>
-      <div className="flex flex-col gap-4">
-        <p className="text-center text-3xl">♎{type} blance</p>
-        <p className="text-center text-3xl">{formatCurrency(Balance)}</p>
+      <div className="mt-2 flex flex-col gap-2">
+        <p className="text-center text-2xl">♎{type} blance</p>
+        <p className="text-center text-2xl">
+          <span className="border-b-2 border-yellow-400">
+            {formatCurrency(Balance)}
+          </span>
+        </p>
       </div>
-    </>
+    </div>
   );
 }
 

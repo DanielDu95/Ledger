@@ -5,7 +5,7 @@ function SubmmitButton() {
   return (
     <button
       type="submit"
-      className="h-20 w-60 rounded-full border-2 border-yellow-500 p-2 text-3xl font-bold"
+      className="mt-10 h-20 w-60 rounded-full border-2 border-yellow-500 p-2 text-3xl font-bold"
       disabled={isPending}
     >
       Submit

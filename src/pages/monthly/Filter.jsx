@@ -1,6 +1,6 @@
 function Filter({ sortBy, setSortBy }) {
   return (
-    <div className="flex h-[4rem] w-[18rem] justify-center gap-0 rounded-full border-[0.1rem] border-black text-2xl font-normal">
+    <div className="flex h-[3rem] w-[16rem] justify-center gap-0 rounded-full border-[0.1rem] border-black text-2xl font-normal">
       <button
         className={`w-[9rem] rounded-l-full ${sortBy === "recent" ? "bg-yellow-300" : ""} `}
         onClick={() => setSortBy("recent")}

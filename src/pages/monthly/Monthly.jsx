@@ -18,7 +18,7 @@ function Records() {
           <Header>
             <HeaderCalendar />
           </Header>
-          <div className="flex h-[30rem] w-[100%] items-center justify-center">
+          <div className="flex h-[25rem] w-[100%] items-center justify-center">
             <PieChartOneMonth />
           </div>
 

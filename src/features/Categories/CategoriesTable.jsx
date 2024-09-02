@@ -13,6 +13,10 @@ import {
 import Category from "./Category";
 import { useCategories } from "./useCategories";
 import { useRecordFormContext } from "../../pages/dashboard/RecordFormContextProvider";
+import { CiCirclePlus } from "react-icons/ci";
+import Modal from "../../ui/Modal";
+import AddCategory from "./AddCategory";
+import Spinner from "../../ui/Spinner";
 
 // const fakeCategories = [
 //   { id: 1, name: "food" },
@@ -28,7 +32,7 @@ function CategoriesTable() {
   const { categories, isLoading } = useCategories();
   const { state } = useRecordFormContext();
 
-  if (isLoading) return <div>isLoading...</div>;
+  if (isLoading) return <Spinner />;
 
   // filter
   const filteredCategories = categories.filter(
@@ -40,6 +44,7 @@ function CategoriesTable() {
     car: IoCarOutline,
     house: IoHomeOutline,
     transfer: IoCardOutline,
+    transferFrom: IoCardOutline,
     shopping: IoCartOutline,
     badminton: GiShuttlecock,
     social: IoPeopleOutline,
@@ -62,6 +67,19 @@ function CategoriesTable() {
             label={category.name}
           />
         ))}
+        <Modal>
+          <Modal.Open>
+            <li
+              className={`$ flex cursor-pointer flex-col items-center justify-center gap-3`}
+              // onClick={() => dispatch({ type: "set_category", payload: label })}
+            >
+              <CiCirclePlus />
+            </li>
+          </Modal.Open>
+          <Modal.Window>
+            <AddCategory />
+          </Modal.Window>
+        </Modal>
       </ul>
     </IconContext.Provider>
   );

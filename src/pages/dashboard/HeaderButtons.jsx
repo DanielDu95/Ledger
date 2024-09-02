@@ -2,7 +2,7 @@ import { useRecordFormContext } from "./RecordFormContextProvider";
 
 function HeaderButtons() {
   const { state, dispatch } = useRecordFormContext();
-  const style = `w-40 h-20 text-center hover:bg-yellow-300  font-bold flex justify-center items-center`;
+  const style = `w-[9rem] h-20 text-center hover:bg-yellow-300  font-bold flex justify-center items-center`;
   function handleOutcome(e) {
     e.preventDefault();
     dispatch({ type: "set_moneyType", payload: "outcome" });
