@@ -33,8 +33,7 @@ function Window({ children, name }) {
         ref={ref}
         className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg bg-gray-100 p-[2rem] shadow-lg transition-all duration-500"
       >
-        <button></button>
-        <div>{cloneElement(children)}</div>
+        <div>{cloneElement(children, { close: close })}</div>
       </div>
     </div>,
     document.body,

@@ -1,21 +1,12 @@
 import { IconContext } from "react-icons";
-import { GiShuttlecock } from "react-icons/gi";
-import {
-  IoBookmarkOutline,
-  IoCarOutline,
-  IoCardOutline,
-  IoCartOutline,
-  IoCashOutline,
-  IoFastFoodOutline,
-  IoHomeOutline,
-  IoPeopleOutline,
-} from "react-icons/io5";
+// import { GiShuttlecock } from "react-icons/gi";
+import * as Icons from "react-icons/io5";
 import Category from "./Category";
 import { useCategories } from "./useCategories";
 import { useRecordFormContext } from "../../pages/dashboard/RecordFormContextProvider";
 import { CiCirclePlus } from "react-icons/ci";
 import Modal from "../../ui/Modal";
-import AddCategory from "./AddCategory";
+// import AddCategory from "./AddCategory";
 import Spinner from "../../ui/Spinner";
 
 // const fakeCategories = [
@@ -39,18 +30,18 @@ function CategoriesTable() {
     (category) => category.categoryType === state.moneyType,
   );
 
-  const categoryIcons = {
-    food: IoFastFoodOutline,
-    car: IoCarOutline,
-    house: IoHomeOutline,
-    transfer: IoCardOutline,
-    transferFrom: IoCardOutline,
-    shopping: IoCartOutline,
-    badminton: GiShuttlecock,
-    social: IoPeopleOutline,
-    others: IoBookmarkOutline,
-    salary: IoCashOutline,
-  };
+  // const categoryIcons = {
+  //   food: IoFastFoodOutline,
+  //   car: IoCarOutline,
+  //   house: IoHomeOutline,
+  //   transfer: IoCardOutline,
+  //   transferFrom: IoCardOutline,
+  //   shopping: IoCartOutline,
+  //   badminton: GiShuttlecock,
+  //   social: IoPeopleOutline,
+  //   others: IoBookmarkOutline,
+  //   salary: IoCashOutline,
+  // };
 
   return (
     <IconContext.Provider
@@ -62,24 +53,20 @@ function CategoriesTable() {
       <ul className="grid grid-cols-4 content-center justify-center gap-x-10 gap-y-20">
         {filteredCategories.map((category) => (
           <Category
-            Icon={categoryIcons[category.name] || IoBookmarkOutline}
+            Icon={Icons[category.icon] || Icons.IoBookmarkOutline}
             key={category.id}
             label={category.name}
           />
         ))}
-        <Modal>
-          <Modal.Open>
-            <li
-              className={`$ flex cursor-pointer flex-col items-center justify-center gap-3`}
-              // onClick={() => dispatch({ type: "set_category", payload: label })}
-            >
-              <CiCirclePlus />
-            </li>
-          </Modal.Open>
-          <Modal.Window>
-            <AddCategory />
-          </Modal.Window>
-        </Modal>
+
+        <Modal.Open>
+          <li
+            className={`$ flex cursor-pointer flex-col items-center justify-center gap-3`}
+            // onClick={() => dispatch({ type: "set_category", payload: label })}
+          >
+            <CiCirclePlus />
+          </li>
+        </Modal.Open>
       </ul>
     </IconContext.Provider>
   );

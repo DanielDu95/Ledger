@@ -15,7 +15,9 @@ function RecordsTable() {
 
   let sortedRecords;
   if (sortBy === "recent")
-    sortedRecords = records.toSorted((a, b) => b.created_at - a.created_at);
+    sortedRecords = records.toSorted(
+      (a, b) => Date.parse(b.created_at) - Date.parse(a.created_at),
+    );
   else if (sortBy === "amount")
     sortedRecords = records.toSorted((a, b) => b.amount - a.amount);
   // console.log(records);

@@ -55,3 +55,12 @@ export async function getRecordsByTimePeriod(timePeriod) {
   // .in("column", ["Array", "Values"])
   // .neq("column", "Not equal to");
 }
+
+export async function deleteRecord(id) {
+  const { data, error } = await supabase.from("records").delete().eq("id", id);
+  if (error) {
+    console.error(error);
+    throw new Error("Records could not be deleted");
+  }
+  return data;
+}

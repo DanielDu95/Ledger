@@ -6,6 +6,7 @@ import { format } from "date-fns";
 
 function RecordRow({ record }) {
   const formatedDate = format(record.created_at, "MM/dd");
+
   return (
     <>
       <li className="grid w-[100%] grid-cols-[1fr_2fr_3fr_0.5fr] px-3 py-5 text-center shadow">
@@ -17,13 +18,13 @@ function RecordRow({ record }) {
 
         <div>{`${record.moneyType === "income" ? "+" : "-"}${formatCurrency(record.amount)}`}</div>
         <Modal>
-          <Modal.Open opens="something">
+          <Modal.Open opens="detail">
             <button>
               <HiOutlineDotsVertical />
             </button>
           </Modal.Open>
-          <Modal.Window name="something">
-            <RecordDetail remark={record.remark} />
+          <Modal.Window name="detail">
+            <RecordDetail remark={record.remark} id={record.id} />
           </Modal.Window>
         </Modal>
       </li>

@@ -1,8 +1,8 @@
 function CategoriesContainer({ children }) {
   return (
-    <ul className="mt-16 h-[24rem] overflow-y-scroll px-[5rem] py-7">
+    <div className="mt-16 h-[24rem] overflow-y-scroll px-[5rem] py-7">
       {children}
-    </ul>
+    </div>
   );
 }
 
