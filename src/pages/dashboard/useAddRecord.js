@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 
 export function useAddRecord() {
   const queryClient = useQueryClient();
-  const { mutate: addRecord, status } = useMutation({
+  const { mutate: addRecord, isPending } = useMutation({
     mutationFn: addRecordApi,
     onSuccess: () => {
       toast.success("New record successfully added");
@@ -14,5 +14,5 @@ export function useAddRecord() {
     },
     onError: (err) => toast.error(err.message),
   });
-  return { addRecord, status };
+  return { addRecord, isPending };
 }

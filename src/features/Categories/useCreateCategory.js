@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 
 export function useCreateCategory() {
   const queryClient = useQueryClient();
-  const { mutate: createCategory, isLoading: isCreatingCategory } = useMutation(
+  const { mutate: createCategory, isPending: isCreatingCategory } = useMutation(
     {
       mutationFn: (newCategory) => createCategoryApi(newCategory),
       onSuccess: () => {

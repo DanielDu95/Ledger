@@ -1,7 +1,9 @@
 import supabase from "./supabase";
 
 export async function getAllRecords() {
+  // const user = supabase.auth.user();
   const { data, error } = await supabase.from("records").select("*");
+  // .eq("user_id", user.id);
   if (error) {
     console.error("Failed to get records from database");
   }
@@ -9,9 +11,10 @@ export async function getAllRecords() {
 }
 
 export async function addRecord(newRecord) {
+  const user = await supabase.auth.getUser();
   const { data, error } = await supabase
     .from("records")
-    .insert([newRecord])
+    .insert([{ ...newRecord, user_id: user.data.user.id }])
     .select();
   if (error) {
     console.error("Failed to add new record to database");
@@ -20,6 +23,8 @@ export async function addRecord(newRecord) {
 }
 
 export async function getRecordsByTimePeriod(timePeriod) {
+  // const user = await supabase.auth.getUser();
+
   let start;
   let end;
   if (timePeriod.month) {
@@ -38,9 +43,12 @@ export async function getRecordsByTimePeriod(timePeriod) {
   const { data: records, error } = await supabase
     .from("records")
     .select("*")
+    // .eq("user_id", user.data.user.id)
     .filter("created_at", "gte", start)
     .filter("created_at", "lt", end);
+
   if (error) console.log("Failed to get records from database");
+
   return records;
 
   //  Filters

@@ -10,9 +10,10 @@ export async function getCategories() {
 }
 
 export async function createCategory(newCategory) {
+  const user = await supabase.auth.getUser();
   const { data, error } = await supabase
     .from("categories")
-    .insert([newCategory])
+    .insert([{ ...newCategory, user_id: user.data.user.id }])
     .select();
   if (error) {
     console.error("Fail to add category to database");

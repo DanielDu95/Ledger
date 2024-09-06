@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { MonthInput, MonthPicker } from "react-lite-month-picker";
+// import { MonthInput, MonthPicker } from "react-lite-month-picker";
+import { MonthInput } from "../../features/monthPick/MonthInput/MonthInput";
+import { MonthPicker } from "../../features/monthPick/MonthPicker/MonthPicker";
 import { useRecordsContext } from "./RecordsContextProvider";
 function HeaderCalendar() {
   const { timePeriod, setTimePeriod } = useRecordsContext();

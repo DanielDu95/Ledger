@@ -8,6 +8,9 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Monthly from "./pages/monthly/Monthly";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools/production";
 import Annual from "./pages/annual/Annual";
+import Login from "./pages/login/Login";
+import ProtectedRoute from "./ui/ProtectedRoute";
+import Signup from "./pages/signup/Signup";
 
 const queryClient = new QueryClient();
 
@@ -19,15 +22,35 @@ function App() {
     },
     {
       path: "dashboard",
-      element: <Dashboard />,
+      element: (
+        <ProtectedRoute>
+          <Dashboard />
+        </ProtectedRoute>
+      ),
     },
     {
       path: "monthly",
-      element: <Monthly />,
+      element: (
+        <ProtectedRoute>
+          <Monthly />
+        </ProtectedRoute>
+      ),
     },
     {
       path: "annual",
-      element: <Annual />,
+      element: (
+        <ProtectedRoute>
+          <Annual />
+        </ProtectedRoute>
+      ),
+    },
+    {
+      path: "login",
+      element: <Login />,
+    },
+    {
+      path: "signup",
+      element: <Signup />,
     },
   ]);
 

@@ -24,6 +24,7 @@ function CategoriesTable() {
   const { state } = useRecordFormContext();
 
   if (isLoading) return <Spinner />;
+  // console.log(categories);
 
   // filter
   const filteredCategories = categories.filter(

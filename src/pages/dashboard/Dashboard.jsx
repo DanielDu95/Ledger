@@ -1,4 +1,4 @@
-import CategoriesTable from "../../features/Categories/CategoriesTable";
+import CategoriesTable from "../../features/categories/CategoriesTable";
 import AmountAndRemark from "../../ui/AmountAndRemark";
 import CategoriesContainer from "../../ui/CategoriesContainer";
 import Header from "../../ui/Header";

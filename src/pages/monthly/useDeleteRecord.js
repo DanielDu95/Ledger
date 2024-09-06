@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 
 export function useDeleteRecord() {
   const queryClient = useQueryClient();
-  const { mutate: deleteRecord, isLoading: isDeletingRecord } = useMutation({
+  const { mutate: deleteRecord, isPending: isDeletingRecord } = useMutation({
     mutationFn: apiDeleteRecord,
     onSuccess: () => {
       toast.success("Record is successfully deleted");

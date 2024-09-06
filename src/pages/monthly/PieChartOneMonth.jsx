@@ -106,6 +106,7 @@ function PieChartOneMonth() {
   const { timePeriod } = useRecordsContext();
   const { records, isLoading } = useRecords(timePeriod);
   if (isLoading) return <Spinner />;
+  if (!records?.length) return <Error message="No records found" />;
 
   const categorySums = records
     .filter((record) => record.moneyType === "outcome")
