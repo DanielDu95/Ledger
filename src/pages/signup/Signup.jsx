@@ -1,6 +1,8 @@
 import Logo from "../../ui/Logo";
 import { useForm } from "react-hook-form";
 import Error from "../../ui/Error";
+import { useSignup } from "./useSignup";
+import { NavLink, useNavigate } from "react-router-dom";
 
 function Signup() {
   const {
@@ -8,13 +10,23 @@ function Signup() {
     formState: { errors },
     getValues,
     handleSubmit,
+    reset,
   } = useForm();
-
+  const { signup, isPending } = useSignup();
+  const navigate = useNavigate();
   const labelStyle = "px-2 font-semibold";
   const inputStyle = "border-2 rounded-full px-4 py-3 w-[100%]";
 
-  function onSubmit(data) {
-    console.log(data);
+  function onSubmit({ fullName, email, password }) {
+    signup(
+      { fullName, email, password },
+      {
+        onSettled: () => {
+          reset();
+          navigate("/login", { replace: true });
+        },
+      },
+    );
   }
   return (
     <div className="flex h-lvh justify-center bg-cyan-100">
@@ -37,7 +49,7 @@ function Signup() {
               {...register("fullName", {
                 required: "This filed is required",
               })}
-              //   disabled={isPending}
+              disabled={isPending}
             />
             {errors?.fullName && (
               <Error size="sm" message={errors.fullName.message} />
@@ -55,7 +67,7 @@ function Signup() {
                   message: "Please provide a valid email address",
                 },
               })}
-              //   disabled={isPending}
+              disabled={isPending}
             />
             {errors?.email && (
               <Error size="sm" message={errors.email.message} />
@@ -73,7 +85,7 @@ function Signup() {
                   message: "Password needs a minimum of 8 characters",
                 },
               })}
-              //   disabled={isPending}
+              disabled={isPending}
             />
             {errors?.password && (
               <Error size="sm" message={errors.password.message} />
@@ -89,18 +101,25 @@ function Signup() {
                 validate: (value) =>
                   value === getValues().password || "Passwords need to match",
               })}
-              //   disabled={isPending}
+              disabled={isPending}
             />
             {errors?.passwordConfirm && (
               <Error size="sm" message={errors.passwordConfirm.message} />
             )}
-
-            <button
-              type="submit"
-              className="mt-5 flex w-[50%] justify-center self-center rounded-full border-2 bg-blue-500 py-2 text-gray-50 hover:bg-blue-600"
-            >
-              Signup
-            </button>
+            <div className="mt-8 flex w-[100%] justify-between">
+              <NavLink
+                to="/login"
+                className="rounded-full border-2 px-4 py-2 text-xl font-semibold text-gray-400 hover:text-gray-500"
+              >
+                Login now
+              </NavLink>
+              <button
+                type="submit"
+                className="w-[50%] rounded-full border-2 bg-blue-500 py-2 text-gray-50 hover:bg-blue-600"
+              >
+                Signup
+              </button>
+            </div>
           </form>
         </div>
       </div>

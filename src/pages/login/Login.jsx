@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useLogin } from "./useLogin";
 import SpinnerMini from "../../ui/SpinnerMini";
 import Logo from "../../ui/Logo";
+import { NavLink } from "react-router-dom";
 
 function Login() {
   const inputStyle = "border-2 rounded-full px-4 py-3";
@@ -52,13 +53,21 @@ function Login() {
               className={inputStyle}
               disabled={isPending}
             />
-            <button
-              onClick={handleClick}
-              disabled={isPending}
-              className="flex w-[50%] justify-center self-center rounded-full border-2 bg-blue-500 py-2 text-gray-50 hover:bg-blue-600"
-            >
-              {isPending ? <SpinnerMini /> : "Login"}
-            </button>
+            <div className="flex w-[100%] justify-between">
+              <NavLink
+                to="/signup"
+                className="rounded-full border-2 px-4 py-2 text-xl font-semibold text-gray-400 hover:text-gray-500"
+              >
+                Signup
+              </NavLink>
+              <button
+                onClick={handleClick}
+                disabled={isPending}
+                className="w-[50%] rounded-full border-2 bg-blue-500 py-2 text-gray-50 hover:bg-blue-600"
+              >
+                {isPending ? <SpinnerMini /> : "Login"}
+              </button>
+            </div>
           </form>
         </div>
       </div>
