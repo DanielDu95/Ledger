@@ -13,22 +13,21 @@ import { useRecordsContext } from "../monthly/RecordsContextProvider";
 import Error from "../../ui/Error";
 import Spinner from "../../ui/Spinner";
 
-const monthlyData = {
-  Jan: { income: 0, outcome: 0 },
-  Feb: { income: 0, outcome: 0 },
-  Mar: { income: 0, outcome: 0 },
-  Apr: { income: 0, outcome: 0 },
-  May: { income: 0, outcome: 0 },
-  Jun: { income: 0, outcome: 0 },
-  Jul: { income: 0, outcome: 0 },
-  Aug: { income: 0, outcome: 0 },
-  Sep: { income: 0, outcome: 0 },
-  Oct: { income: 0, outcome: 0 },
-  Nov: { income: 0, outcome: 0 },
-  Dec: { income: 0, outcome: 0 },
-};
-
 function LineChartAnnual() {
+  const monthlyData = {
+    Jan: { income: 0, outcome: 0 },
+    Feb: { income: 0, outcome: 0 },
+    Mar: { income: 0, outcome: 0 },
+    Apr: { income: 0, outcome: 0 },
+    May: { income: 0, outcome: 0 },
+    Jun: { income: 0, outcome: 0 },
+    Jul: { income: 0, outcome: 0 },
+    Aug: { income: 0, outcome: 0 },
+    Sep: { income: 0, outcome: 0 },
+    Oct: { income: 0, outcome: 0 },
+    Nov: { income: 0, outcome: 0 },
+    Dec: { income: 0, outcome: 0 },
+  };
   const { timePeriod, visibleLine } = useRecordsContext();
 
   const { records, isLoading } = useRecords(timePeriod);
@@ -50,9 +49,9 @@ function LineChartAnnual() {
 
   // Format the final data
   const data = Object.keys(monthlyData).map((month) => {
-    const income = monthlyData[month].income;
-    const outcome = monthlyData[month].outcome;
-    const balance = income - outcome;
+    const income = monthlyData[month].income.toFixed(1);
+    const outcome = monthlyData[month].outcome.toFixed(1);
+    const balance = (income - outcome).toFixed(1);
 
     return { month, income, outcome, balance };
   });

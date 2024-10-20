@@ -7,8 +7,8 @@ import { NavLink } from "react-router-dom";
 
 function Login() {
   const inputStyle = "border-2 rounded-full px-4 py-3";
-  const [email, setEmail] = useState("daniel@example.com");
-  const [password, setPassword] = useState("123321110");
+  const [email, setEmail] = useState("foreveryone@example.com");
+  const [password, setPassword] = useState("foreveryonetouse");
 
   const { login, isPending } = useLogin();
 
@@ -63,7 +63,7 @@ function Login() {
               <button
                 onClick={handleClick}
                 disabled={isPending}
-                className="w-[50%] rounded-full border-2 bg-blue-500 py-2 text-gray-50 hover:bg-blue-600"
+                className="flex w-[50%] justify-center rounded-full border-2 bg-blue-500 py-2 text-gray-50 hover:bg-blue-600"
               >
                 {isPending ? <SpinnerMini /> : "Login"}
               </button>

@@ -56,6 +56,7 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      {/* eslint-disable-next-line no-undef */}
       {process.env.NODE_ENV === "development" && (
         <ReactQueryDevtools initialIsOpen={false} />
       )}

@@ -21,9 +21,12 @@ function Signup() {
     signup(
       { fullName, email, password },
       {
-        onSettled: () => {
+        onSuccess: () => {
           reset();
           navigate("/login", { replace: true });
+        },
+        onError: (err) => {
+          console.log(err);
         },
       },
     );
