@@ -3,7 +3,7 @@ import { useRecordFormContext } from "./RecordFormContextProvider";
 import Error from "../../ui/Error";
 import { useAddRecord } from "./useAddRecord";
 import Modal from "../../ui/Modal";
-import AddCategory from "../../features/categories/AddCategory";
+import AddCategory from "../../features/categoriesss/AddCategory";
 
 function CreateRecordForm({ children }) {
   const {
